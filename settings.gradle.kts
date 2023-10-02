@@ -14,5 +14,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Analytics"
-include(":app")
 include(":AnalyticService")
