@@ -49,3 +49,15 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
 }
+
+afterEvaluate {
+    configure<PublishingExtension> {
+        publications {
+            create<MavenPublication>("mavenJava") {
+                groupId = "com.github.vylhart"
+                artifactId = "library"
+                version = "1.0"
+            }
+        }
+    }
+}
