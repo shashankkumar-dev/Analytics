@@ -50,41 +50,23 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
 }
 
-afterEvaluate {
-    configure<PublishingExtension> {
-        publications {
-            create<MavenPublication>("mavenJava") {
-                groupId = "com.github.vylhart"
-                artifactId = "Analytics"
-                version = "0.0.9"
+publishing {
+    publications {
+        create("bar", MavenPublication::class.java) {
+            groupId = "com.github.vylhart"
+            artifactId = "analytics"
+            version = "0.0.14"
+            artifact("$buildDir/outputs/aar/AnalyticService-release.aar")
+        }
+    }
 
-                // Customize the POM file
-                pom {
-                    name.set("Analytics Service")
-                    description.set("A library for XYZ functionality.")
-                    url.set("https://github.com/vylhart/Analytics")
-
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-
-                    developers {
-                        developer {
-                            id.set("vylhart")
-                            name.set("Shashank")
-                            email.set("shashankcrimson@gmail.com")
-                        }
-                    }
-
-                    scm {
-                        connection.set("scm:git:github.com/vylhart/Analytics.git")
-                        developerConnection.set("scm:git:ssh://github.com/vylhart/Analytics.git")
-                        url.set("https://github.com/vylhart/Analytics")
-                    }
-                }
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/vylhart/Analytics")
+            credentials {
+                username = "Shashank Kumar"
+                password = "***"
             }
         }
     }
