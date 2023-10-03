@@ -3,6 +3,3 @@ jdk:
   - openjdk17
 before_install:
   - ./scripts/prepareJitpackEnvironment.sh
-install:
-  - FILE="-Dfile=AnalyticService-release.aar"
-  - mvn install:install-file $FILE -DgroupId=com.github.vylhart -DartifactId=Analytics -Dversion=0.0.9 -Dpackaging=aar -DgeneratePom=true
